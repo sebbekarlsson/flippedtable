@@ -19,6 +19,11 @@
 
 > Will return an array of FlippedTable-rows.
 
+#### FlippedTable.applyDefaultStyle()
+> Apply the default built-in styling for the table.
+
+        table.applyDefaultStyle();
+
 #### FlippedTable.clean()
 > Used to remove all data from the table.
 
