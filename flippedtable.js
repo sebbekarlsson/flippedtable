@@ -21,7 +21,7 @@ var FlippedTableRow = function (element) {
         this.element = element;
     }
     this.initialize(element);
-    
+
     /**
      * Get value from row/<tr>
      *
@@ -74,6 +74,7 @@ var FlippedTable = function (element) {
         this.table.style.width = '100%';
         this.table.style.textAlign = 'left';
 
+        this.element.setAttribute('version', '0');
         this.element.appendChild(this.table);
     }
     this.initialize(element);
@@ -128,7 +129,7 @@ var FlippedTable = function (element) {
                 }
             }
         }
-        
+
         if(tr.childNodes.length == 0) {
             return undefined;
         }
@@ -163,5 +164,52 @@ var FlippedTable = function (element) {
         }
 
         return row_arr;
+    }
+
+    /**
+     * Clear the table from all data, including keys.
+     *
+     * @return FlippedTable - (this)
+     */
+    this.clean = function () {
+        this.head.innerHTML = '';
+        this.body.innerHTML = '';
+
+        return this;
+    }
+
+    /**
+     * Synchronize the table from a JSON endpoint.
+     *
+     * @param String url - Endpoint to synchronize from.
+     *
+     * @return Boolean
+     */
+    this.synchronize = function (url) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", url, false );
+        xmlHttp.send( null );
+        var response_text = xmlHttp.responseText;
+        var j = JSON.parse(response_text);
+
+        var version = j['version'];
+        var current_version = this.element.getAttribute('version');
+
+        if (current_version != version) {
+            this.clean();
+            this.setKeys(j['keys']);
+
+            var rows = j['rows'];
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+
+                this.addRecord(row);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }
