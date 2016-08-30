@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type='text/javascript' src='flippedtable.js'></script>
+    </head>
+    <body>
+        <div id='myTable'></div>
+        <script type='text/javascript'>
+            var table = new FlippedTable(document.getElementById('myTable'));
+            table.setKeys(['id', 'title']);
+
+            table.addRecord({id: '232', title: 'Test title'}); 
+        </script>
+    </body>
+</html>
