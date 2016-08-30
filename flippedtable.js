@@ -222,5 +222,6 @@ var FlippedTable = function (element) {
      */
     this.applyDefaultStyle = function () {
         this.table.setAttribute('border', 1);
+        this.table.style.textAlign = 'left';
     }
 }
