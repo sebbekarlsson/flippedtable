@@ -214,4 +214,13 @@ var FlippedTable = function (element) {
 
         return false;
     }
+
+    /**
+     * Apply the default built-in styling for the table.
+     *
+     * @return undefined
+     */
+    this.applyDefaultStyle = function () {
+        this.table.setAttribute('border', 1);
+    }
 }
