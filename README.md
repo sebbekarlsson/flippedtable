@@ -7,6 +7,9 @@
 > * Adding records
 > * Removing records
 
+## How to use
+> [API Documentation](API.md)
+
 ## Example
         
         <div id='myTable'></div>
