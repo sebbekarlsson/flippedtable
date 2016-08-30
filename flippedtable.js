@@ -78,9 +78,6 @@ var FlippedTable = function (element) {
         this.table.appendChild(this.head);
         this.table.appendChild(this.body);
 
-        this.table.style.width = '100%';
-        this.table.style.textAlign = 'left';
-
         this.element.setAttribute('version', '0');
         this.element.appendChild(this.table);
     }
@@ -102,7 +99,6 @@ var FlippedTable = function (element) {
             var k = keyarr[i];
 
             var th = document.createElement('th');
-            th.style.padding = '0.5rem';
 
             th.innerHTML = k;
             tr.appendChild(th); 
@@ -128,7 +124,6 @@ var FlippedTable = function (element) {
             for (var key in record) {
                 if (key == ths[ii].innerHTML) {
                     var td = document.createElement('td');
-                    td.style.padding = '0.5rem';
 
                     td.innerHTML = record[key];
                     td.setAttribute('key', ths[ii].innerHTML);
